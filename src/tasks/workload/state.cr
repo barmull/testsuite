@@ -419,10 +419,7 @@ task "database_persistence" do |t, args|
     match = Mysql.match
     Log.info {"database_persistence mysql: #{match}"}
     if match && match[:found]
-      default_namespace = "default"
-      if !config.cnf_config[:helm_install_namespace].empty?
-        default_namespace = config.cnf_config[:helm_install_namespace]
-      end
+      default_namespace = CNFManager.get_default_namespace(config)
       statefulset_exists = Helm.kind_exists?(args, config, "statefulset", default_namespace)
 
       unless statefulset_exists
