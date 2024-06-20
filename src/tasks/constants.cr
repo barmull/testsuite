@@ -9,6 +9,7 @@ PASSED = "passed"
 FAILED = "failed"
 SKIPPED = "skipped"
 NA = "na"
+ERROR = "error"
 # todo move to helm module
 # CHART_YAML = "Chart.yaml"
 DEFAULT_POINTSFILENAME = "points_v1.yml"
@@ -21,6 +22,7 @@ SONOBUOY_OS = "linux"
 IGNORED_SECRET_TYPES = ["kubernetes.io/service-account-token", "kubernetes.io/dockercfg", "kubernetes.io/dockerconfigjson", "helm.sh/release.v1"]
 EMPTY_JSON = JSON.parse(%({}))
 EMPTY_JSON_ARRAY = JSON.parse(%([]))
+SPECIALIZED_INIT_SYSTEMS = ["tini", "dumb-init", "s6-svscan"]
 
 TESTSUITE_NAMESPACE = "cnf-testsuite"
 
@@ -37,6 +39,7 @@ EmbeddedFileManager.constraint_template
 EmbeddedFileManager.disable_cni
 EmbeddedFileManager.fluentd_values
 EmbeddedFileManager.fluentbit_values
+EmbeddedFileManager.fluentd_bitnami_values
 EmbeddedFileManager.ueransim_helmconfig
 
 EXCLUDE_NAMESPACES = [

@@ -89,6 +89,14 @@ crystal src/cnf-testsuite.cr workload
 cnf-config=<path_to_your_config_file>/cnf-testsuite.yml
 ```
 
+#### Running certification tests
+
+```
+./cnf-testsuite cert
+./cnf-testsuite cert essential
+./cnf-testsuite cert exclude="increase_decrease_capacity single_process_type"
+```
+
 #### Running all of the platform or workload tests independently:
 
 ##### Run workload only tests:
@@ -151,6 +159,16 @@ Also setting the verbose option for many tasks will add extra output to help wit
 ```
 ./cnf-testsuite test_name verbose
 ```
+#### Environment variables for timeouts:
+
+Timeouts are controlled by these environment variables, set them if default values aren't suitable:
+```
+CNF_TESTSUITE_GENERIC_OPERATION_TIMEOUT=60
+CNF_TESTSUITE_RESOURCE_CREATION_TIMEOUT=120
+CNF_TESTSUITE_NODE_READINESS_TIMEOUT=240
+CNF_TESTSUITE_POD_READINESS_TIMEOUT=180
+CNF_TESTSUITE_LITMUS_CHAOS_TEST_TIMEOUT=1800
+```
 
 #### Running The Linter in Developer Mode
 
@@ -174,16 +192,6 @@ crystal bin/ameba.cr
 ##### To run both increase and decrease tests, you can use the alias command that calls them both:
 ```
 ./cnf-testsuite increase_decrease_capacity
-```
-### [Increase capacity](https://github.com/cnti-testcatalog/testsuite/blob/refactor_usage_doc%231371/docs/LIST_OF_TESTS.md#increase-capacity)
-##### Or, they can be called individually using the following commands:
-```
-./cnf-testsuite increase_capacity
-```
-### [Decrease capacity](https://github.com/cnti-testcatalog/testsuite/blob/refactor_usage_doc%231371/docs/LIST_OF_TESTS.md#decrease-capacity)
-
-```
-./cnf-testsuite decrease_capacity
 ```
 
 <b>Remediation for failing this test:</b>
